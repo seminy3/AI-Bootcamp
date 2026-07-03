@@ -17,3 +17,14 @@ __pycache__/
 
 # PDF에서 자동 생성되는 중간 텍스트 파일
 *_pre.txt
+
+# 벡터 DB (build_vectorstore.py로 재생성 가능한 바이너리 파일)
+chroma_store/
+
+# 원본 데이터(PDF/음성/이미지)와 실행 결과 파일은 커밋하지 않고 data.zip으로만 관리
+# (챕터 루트의 data.zip 압축을 풀어서 사용, 실행 결과물은 재생성 가능하므로 제외)
+chap03/data/
+chap04/data/
+chap09/data/
+chap10/data/
+chap13/data/

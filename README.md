@@ -2,19 +2,36 @@
 
 여름 계절학기 AI 부트캠프 중급과정 실습 코드. OpenAI API 대신 [OpenRouter](https://openrouter.ai)를 사용.
 
+각 챕터 폴더의 `README.md`에 해당 챕터 파일들의 상세 설명이 있습니다.
+
 ## 환경 설정
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install openai python-dotenv streamlit pymupdf pillow pytz yfinance langchain langchain-openai pydantic tabulate
+pip install openai python-dotenv streamlit pymupdf pillow pytz yfinance langchain langchain-openai pydantic tabulate \
+    ddgs beautifulsoup4 tavily-python youtube-search youtube-transcript-api langchain-community \
+    transformers accelerate torch torchaudio pyannote.audio \
+    langchain_chroma pypdf langgraph langchain-ollama jupyter nbformat
 ```
 
-`.env` 파일에 OpenRouter API 키 설정 (git에 커밋되지 않음):
+`.env` 파일에 API 키 설정 (git에 커밋되지 않음):
 
 ```
-OPENAI_API_KEY=sk-or-v1-...
+OPENAI_API_KEY=sk-or-v1-...        # OpenRouter (2~13장 공통)
+TAVILY_API_KEY=tvly-...            # 8장 Tavily 검색
+HUGGING_FACE_TOKEN=hf_...          # 9장 화자 분리 (pyannote 모델)
 ```
+
+9장 화자 분리는 [ffmpeg](https://ffmpeg.org) 설치가 필요하고 (`brew install ffmpeg`), 11장은 [Ollama](https://ollama.com) 설치 후 `ollama pull deepseek-r1:8b`가 필요합니다.
+
+PDF/음성/이미지 등 원본 데이터 파일은 용량 문제로 각 챕터의 `data.zip`으로만 저장소에 포함되어 있습니다 (3, 4, 9, 10, 13장). 실행 전 압축을 해제하세요:
+
+```bash
+cd chap0N && unzip data.zip -d data && cd ..
+```
+
+실행 결과물(요약, 퀴즈, STT 결과 등)은 저장소에 포함하지 않으며, 각 스크립트를 실행하면 다시 생성됩니다.
 
 ## 챕터별 진행 상황
 
@@ -26,9 +43,12 @@ OPENAI_API_KEY=sk-or-v1-...
 | 5장 | Function Calling (시간 조회) | ✅ |
 | 6장 | Function Calling + 스트리밍 (주식 정보) | ✅ |
 | 7장 | LangChain 기본/세션 관리/LCEL/도구/에이전트 | ✅ |
-| 8장 | 인터넷 검색 챗봇 만들기 | ⬜ |
-| 9장 | RAG / 음성을 텍스트로 정리하기 | ⬜ |
-| 11장 | 로컬 DeepSeek-R1 모델 사용하기 | ⬜ |
+| 8장 | 인터넷 검색 챗봇 만들기 (DuckDuckGo/Tavily/YouTube) | ✅ |
+| 9장 | 음성을 텍스트로 정리하기 (로컬 Whisper, 화자 분리) | ✅ |
+| 10장 | RAG (검색 증강 생성) | ✅ |
+| 11장 | 로컬 DeepSeek-R1 모델 사용하기 | ✅ |
+| 12장 | LangGraph 기본/메모리/도구 에이전트 | ✅ |
+| 13장 | LangGraph 멀티에이전트 RAG | ✅ |
 
 ## 실행 방법
 
@@ -42,4 +62,10 @@ Streamlit 앱:
 
 ```bash
 .venv/bin/streamlit run chap0N/파일명.py
+```
+
+주피터 노트북 (Streamlit 앱을 제외한 모든 스크립트는 `.ipynb` 버전도 함께 제공):
+
+```bash
+.venv/bin/jupyter notebook
 ```
