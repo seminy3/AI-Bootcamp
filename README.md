@@ -11,8 +11,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install openai python-dotenv streamlit pymupdf pillow pytz yfinance langchain langchain-openai pydantic tabulate \
     ddgs beautifulsoup4 tavily-python youtube-search youtube-transcript-api langchain-community \
-    transformers accelerate torch torchaudio pyannote.audio \
-    langchain_chroma pypdf langgraph langchain-ollama jupyter nbformat
+    pandas langchain_chroma pypdf langgraph langchain-ollama jupyter nbformat
 ```
 
 `.env` 파일에 API 키 설정 (git에 커밋되지 않음):
@@ -20,10 +19,9 @@ pip install openai python-dotenv streamlit pymupdf pillow pytz yfinance langchai
 ```
 OPENAI_API_KEY=sk-or-v1-...        # OpenRouter (2~13장 공통)
 TAVILY_API_KEY=tvly-...            # 8장 Tavily 검색
-HUGGING_FACE_TOKEN=hf_...          # 9장 화자 분리 (pyannote 모델)
 ```
 
-9장 화자 분리는 [ffmpeg](https://ffmpeg.org) 설치가 필요하고 (`brew install ffmpeg`), 11장은 [Ollama](https://ollama.com) 설치 후 `ollama pull deepseek-r1:8b`가 필요합니다.
+9장은 OpenRouter 오디오 모델을 쓰므로 별도 설치가 필요 없고, 11장은 [Ollama](https://ollama.com) 설치 후 `ollama pull deepseek-r1:8b`가 필요합니다.
 
 PDF/음성/이미지 등 원본 데이터 파일은 용량 문제로 각 챕터의 `data.zip`으로만 저장소에 포함되어 있습니다 (3, 4, 9, 10, 13장). 실행 전 압축을 해제하세요:
 
@@ -44,7 +42,7 @@ cd chap0N && unzip data.zip -d data && cd ..
 | 6장 | Function Calling + 스트리밍 (주식 정보) | ✅ |
 | 7장 | LangChain 기본/세션 관리/LCEL/도구/에이전트 | ✅ |
 | 8장 | 인터넷 검색 챗봇 만들기 (DuckDuckGo/Tavily/YouTube) | ✅ |
-| 9장 | 음성을 텍스트로 정리하기 (로컬 Whisper, 화자 분리) | ✅ |
+| 9장 | 음성을 텍스트로 정리하기 (OpenRouter 오디오 모델, 화자 구분) | ✅ |
 | 10장 | RAG (검색 증강 생성) | ✅ |
 | 11장 | 로컬 DeepSeek-R1 모델 사용하기 | ✅ |
 | 12장 | LangGraph 기본/메모리/도구 에이전트 | ✅ |
