@@ -16,7 +16,7 @@ def diarize_to_rttm(audio_file_path: str, rttm_file_path: str):
     """화자 분리 실행 후 결과를 RTTM 파일로 저장"""
     pipeline = Pipeline.from_pretrained(
         "pyannote/speaker-diarization-3.1",
-        use_auth_token=HUGGING_FACE_TOKEN,
+        token=HUGGING_FACE_TOKEN,
     )
 
     diarization = pipeline(audio_file_path)
