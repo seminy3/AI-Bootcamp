@@ -47,6 +47,7 @@ cd chap0N && unzip data.zip -d data && cd ..
 | 11장 | 로컬 DeepSeek-R1 모델 사용하기 | ✅ |
 | 12장 | LangGraph 기본/메모리/도구 에이전트 | ✅ |
 | 13장 | LangGraph 멀티에이전트 RAG | ✅ |
+| 14장 | LangGraph로 목차 작성 멀티에이전트 (supervisor 라우팅 + 웹검색/RAG) | ✅ |
 
 ## 실행 방법
 

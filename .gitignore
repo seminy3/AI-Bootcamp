@@ -18,6 +18,9 @@ __pycache__/
 # PDF에서 자동 생성되는 중간 텍스트 파일
 *_pre.txt
 
+# LangGraph가 draw_mermaid_png로 자동 생성하는 그래프 이미지 (재생성 가능)
+chap14/*.png
+
 # 벡터 DB (build_vectorstore.py로 재생성 가능한 바이너리 파일)
 chroma_store/
 
@@ -28,3 +31,4 @@ chap04/data/
 chap09/data/
 chap10/data/
 chap13/data/
+chap14/data/
